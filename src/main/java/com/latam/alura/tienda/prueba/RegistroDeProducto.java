@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import com.latam.alura.tienda.dao.CategoriaDao;
 import com.latam.alura.tienda.dao.ProductoDao;
 import com.latam.alura.tienda.modelo.Categoria;
 import com.latam.alura.tienda.modelo.Producto;
@@ -22,8 +23,11 @@ public class RegistroDeProducto {
 		EntityManager em = JPAUtils.getEntityManager();
 
 		ProductoDao productoDao = new ProductoDao(em);
+		CategoriaDao categoriaDao = new CategoriaDao (em);
 
 		em.getTransaction().begin();
+		
+		categoriaDao.guardar(celulares);
 
 		productoDao.guardar(celular);
 
